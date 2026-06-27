@@ -177,22 +177,22 @@ body {
   overflow-x: auto;
   cursor: grab;
   user-select: none;
-  padding-bottom: 3px;
+  padding-bottom: 6px; /* 增加底部间距 */
 }
 .categories-wrapper:active {
   cursor: grabbing;
 }
 
-/* 优雅的小滚动轨 */
+/* 优雅易用的滚动轨，高度由 3px 升级到 6px 以极大拓宽鼠标点击与拖拽范围 */
 .categories-wrapper::-webkit-scrollbar {
-  height: 3px;
+  height: 6px;
 }
 .categories-wrapper::-webkit-scrollbar-thumb {
-  background: rgba(138, 111, 77, 0.15);
-  border-radius: 4px;
+  background: rgba(138, 111, 77, 0.25);
+  border-radius: 6px;
 }
 .categories-wrapper::-webkit-scrollbar-thumb:hover {
-  background: rgba(138, 111, 77, 0.3);
+  background: rgba(138, 111, 77, 0.45);
 }
 
 .categories-list {

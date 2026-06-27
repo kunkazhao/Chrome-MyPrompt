@@ -197,7 +197,8 @@ let state = {
   categories: [],
   prompts: [],
   activeTab: 'pinned',          // 默认选中置顶 Tab
-  currentEditingPromptId: null // 当前编辑的提示词 ID
+  currentEditingPromptId: null, // 当前编辑的提示词 ID
+  hasDragged: false             // 拖拽标志，防止拖拽误触发分类切换
 };
 
 // 4. DOM 元素
@@ -436,22 +437,28 @@ function initDragToScroll() {
   let isDown = false;
   let startX;
   let scrollLeft;
+  let startPageX;
   
   wrapper.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.category-tab') || e.target.closest('.category-actions-group')) {
-      // 允许点击，但在拖拽时做状态转移
-    }
     isDown = true;
     startX = e.pageX - wrapper.offsetLeft;
+    startPageX = e.pageX;
     scrollLeft = wrapper.scrollLeft;
+    state.hasDragged = false;
   });
   
   wrapper.addEventListener('mouseleave', () => {
     isDown = false;
   });
   
-  wrapper.addEventListener('mouseup', () => {
+  wrapper.addEventListener('mouseup', (e) => {
     isDown = false;
+    if (startPageX !== undefined && Math.abs(e.pageX - startPageX) > 5) {
+      state.hasDragged = true;
+      setTimeout(() => {
+        state.hasDragged = false;
+      }, 50);
+    }
   });
   
   wrapper.addEventListener('mousemove', (e) => {
@@ -803,6 +810,7 @@ function deleteCategory(catId) {
 function bindEvents() {
   // 分类 Tab 点击
   DOM.categoriesList.addEventListener('click', (e) => {
+    if (state.hasDragged) return; // 拦截拖拽引发的误触点击
     const tab = e.target.closest('.category-tab');
     if (!tab) return;
     
