@@ -165,11 +165,9 @@ body {
   align-items: center;
   gap: 8px;
   padding: 12px 14px;
-  /* 优化：将原有的米色背景改为高雅通透的纯白半透明毛玻璃，自然融入顶部 Chrome 纯白标题栏与底部暖米色，形成丝滑的高级毛玻璃过渡 */
-  background-color: rgba(255, 255, 255, 0.45);
-  border-bottom: 1px solid rgba(138, 111, 77, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* 优化：彻底统一为网页主背景的暖米色，移除任何带有白色的毛玻璃杂色，实现纯净高雅的一色到底 */
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid rgba(138, 111, 77, 0.05);
   z-index: 10;
 }
 
