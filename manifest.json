@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "赵二的提示词",
+  "version": "1.0.0",
+  "description": "一个优雅、高效的提示词管理侧边栏插件，支持分类管理与一键复制。",
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "打开赵二的提示词",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}
