@@ -165,10 +165,11 @@ body {
   align-items: center;
   gap: 8px;
   padding: 12px 14px;
-  background-color: rgba(246, 245, 238, 0.7);
-  border-bottom: 1px solid rgba(138, 111, 77, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* 优化：将原有的米色背景改为高雅通透的纯白半透明毛玻璃，自然融入顶部 Chrome 纯白标题栏与底部暖米色，形成丝滑的高级毛玻璃过渡 */
+  background-color: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(138, 111, 77, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 10;
 }
 
